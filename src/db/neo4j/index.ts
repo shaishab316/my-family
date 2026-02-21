@@ -1,5 +1,5 @@
-import neo4j, { Driver as Neo4jDriver } from 'neo4j-driver';
-import config from '../../config';
+import neo4j, { type Driver as Neo4jDriver } from 'neo4j-driver';
+import config from '@/config';
 
 /**
  * Custom error class for Neo4j connection errors.
