@@ -38,8 +38,14 @@ const makeLogger = (level: 'info' | 'error', file: string, maxFiles: string) =>
 		],
 	});
 
-export const logger = makeLogger('info', 'app-%DATE%.log', '30d');
-export const errorLogger = makeLogger('error', 'error-%DATE%.log', '90d');
+const infoLogger = makeLogger('info', 'app-%DATE%.log', '30d');
+const errorLogger = makeLogger('error', 'error-%DATE%.log', '90d');
+
+export const logger = {
+	info: (message: string, ...meta: any[]) => infoLogger.info(message, ...meta),
+	error: (message: string, ...meta: any[]) =>
+		errorLogger.error(message, ...meta),
+};
 
 // Morgan
 morgan.token('message', (_, res: Response) => res?.locals.errorMessage ?? '');
@@ -56,6 +62,6 @@ export const Morgan = {
 	}),
 	errorHandler: morgan(fmt, {
 		skip: skip(statusCodes.BAD_REQUEST, 600),
-		stream: { write: (m) => errorLogger.error(m.trim()) },
+		stream: { write: (m) => logger.error(m.trim()) },
 	}),
 };

@@ -46,7 +46,7 @@ app.get('/', (_, res) => {
 // Health check
 app.get('/health', (_, res) => {
 	serveResponse(res, {
-		message: 'Server is healthy!',
+		message: `${process.env.npm_package_name} is healthy!`,
 		meta: {
 			timestamp: new Date(),
 			version: process.env.npm_package_version,
