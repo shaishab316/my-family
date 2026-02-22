@@ -1,19 +1,19 @@
-import { statusCodes } from '@/lib/status_codes';
-import { Response } from 'express';
+import { statusCodes } from "@/lib/status_codes";
+import { Response } from "express";
 
 export type TPagination = {
-	page: number;
-	limit: number;
-	totalPages: number;
-	total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+  total: number;
 };
 
 export type TServeResponse<T> = {
-	success: boolean;
-	statusCode: number;
-	message: string;
-	meta?: Record<string, unknown> & { pagination?: TPagination };
-	data?: T;
+  success: boolean;
+  statusCode: number;
+  message: string;
+  meta?: Record<string, unknown> & { pagination?: TPagination };
+  data?: T;
 };
 
 /**
@@ -21,14 +21,18 @@ export type TServeResponse<T> = {
  * including success status, message, metadata and optional data payload
  */
 const serveResponse = <T>(
-	res: Response,
-	{
-		statusCode = statusCodes.OK,
-		success = true,
-		message = 'Success',
-		meta,
-		data,
-	}: Partial<TServeResponse<T>> = {},
-) => res.status(statusCode).json({ success, statusCode, message, meta, data });
+  res: Response,
+  {
+    statusCode = statusCodes.OK,
+    success = true,
+    message = "Success",
+    meta,
+    data,
+  }: Partial<TServeResponse<T>> = {},
+) => {
+  res.statusMessage = message;
+
+  res.status(statusCode).json({ success, statusCode, message, meta, data });
+};
 
 export default serveResponse;
