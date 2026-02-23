@@ -1,5 +1,3 @@
-import "./loadenv";
-
 export default {
   port: Number(process.env.PORT ?? 3000),
   neo4j: {
