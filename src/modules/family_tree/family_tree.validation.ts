@@ -16,7 +16,7 @@ const validators = {
 
   gender: z.enum(EGender),
 
-  date: z.iso.datetime().transform((str) => new Date(str)),
+  date: z.iso.datetime(),
 
   flag: z.boolean(),
 };

@@ -82,9 +82,7 @@ class Neo4jClient {
    * Gets a Neo4j session for the configured database.
    */
   public getSession() {
-    return this.getDriver().session({
-      database: config.neo4j.database,
-    });
+    return this.getDriver().session();
   }
 
   /**
