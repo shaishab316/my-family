@@ -7,7 +7,7 @@ import type catchAsync from "@/middlewares/catchAsync";
 
 /******************************************/
 /*                                        */
-/*           Model  Interface      	*/
+/*             Model  Interface         	*/
 /*                                        */
 /*****************************************/
 
