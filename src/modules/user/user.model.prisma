@@ -1,0 +1,33 @@
+model User {
+  create_at DateTime @default(now())
+  update_at DateTime @updatedAt
+
+  id Int @id @default(autoincrement())
+
+  display_name String
+  first_name   String?
+  last_name    String?
+
+  profile_picture String?
+
+  email_encrypted String //? use for sending email, but not for storing
+  email_hash      String //? use for searching user by email, but not for sending email
+
+  password_hash String //? use for authentication
+
+  phone_number_encrypted String? //? use for sending sms, but not for storing
+  phone_number_hash      String? //? use for searching user by phone number, but not for sending sms
+
+  //? flags
+  is_email_verified Boolean @default(false)
+  is_phone_verified Boolean @default(false)
+  is_active         Boolean @default(true)
+  is_deleted        Boolean @default(false)
+  is_admin          Boolean @default(false)
+  is_super_admin    Boolean @default(false)
+
+  @@index([email_hash]) //? for searching user by email
+  @@index([phone_number_hash]) //? for searching user by phone number
+  @@index([is_active, is_deleted]) //? for searching active and not deleted users
+  @@map("users")
+}

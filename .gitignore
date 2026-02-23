@@ -142,3 +142,11 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# database files
+*.db
+*.sqlite
+*.sqlite3
+
+# prisma files
+prisma/client
