@@ -1,3 +1,5 @@
+import "./loadenv";
+
 export default {
   port: Number(process.env.PORT ?? 3000),
   neo4j: {
@@ -6,4 +8,5 @@ export default {
     password: String(process.env.NEO4J_PASSWORD),
     database: String(process.env.NEO4J_DATABASE),
   },
+  database_url: String(process.env.DATABASE_URL),
 };
