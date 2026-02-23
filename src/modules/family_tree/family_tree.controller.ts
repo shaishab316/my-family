@@ -1,11 +1,15 @@
-import catchAsync from "@/middlewares/catchAsync";
-import { FamilyTreeService } from "./family_tree.service";
-import { TCreatePerson } from "./family_tree.interface";
+import type {
+  TCreatePerson,
+  TFamilyTreeControllerOptions,
+} from "./family_tree.interface";
 
 /**
  * FamilyTreeController is a controller that handles the HTTP requests for the family tree module.
  */
-export const FamilyTreeController = (service = new FamilyTreeService()) => ({
+export const FamilyTreeController = ({
+  service,
+  catchAsync,
+}: TFamilyTreeControllerOptions) => ({
   /**
    * createPerson creates a new person in the family tree.
    */

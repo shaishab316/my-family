@@ -25,18 +25,18 @@ export const FamilyTreeValidation = {
   createPerson: z.object({
     body: z.object({
       display_name: validators.name("Display name"),
-      first_name: validators.name("First name").optional(),
-      last_name: validators.name("Last name").optional(),
-      middle_name: validators.name("Middle name").optional(),
-      name_suffix: validators.name("Name suffix").optional(),
-      name_prefix: validators.name("Name prefix").optional(),
+      first_name: validators.name("First name").nullable().default(null),
+      last_name: validators.name("Last name").nullable().default(null),
+      middle_name: validators.name("Middle name").nullable().default(null),
+      name_suffix: validators.name("Name suffix").nullable().default(null),
+      name_prefix: validators.name("Name prefix").nullable().default(null),
 
-      gender: validators.gender.optional(),
+      gender: validators.gender.nullable().default(null),
 
-      dob: validators.date.optional(),
-      dod: validators.date.optional(),
+      dob: validators.date.nullable().default(null),
+      dod: validators.date.nullable().default(null),
 
-      is_alive: validators.flag.optional(),
+      is_alive: validators.flag.nullable().default(null),
     }),
   }),
 };

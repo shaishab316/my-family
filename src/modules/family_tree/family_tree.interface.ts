@@ -2,6 +2,8 @@ import type { z } from "zod";
 import type { EGender } from "./family_tree.constant";
 export type { EGender } from "./family_tree.constant";
 import type { FamilyTreeValidation } from "./family_tree.validation";
+import type { FamilyTreeService } from "./family_tree.service";
+import type catchAsync from "@/middlewares/catchAsync";
 
 /******************************************/
 /*                                        */
@@ -17,7 +19,7 @@ export type UUID = string;
 /**
  * Person is a person in the family tree.
  */
-export interface Person {
+export interface TPerson {
   created_at: Date;
   updated_at: Date;
 
@@ -83,7 +85,7 @@ export type MarriageStatus = "MARRIED" | "WIDOWED" | "DIVORCED" | "SEPARATED";
 /**
  * Person relation is a directed edge between two people.
  */
-export interface PersonRelation {
+export interface TPersonRelation {
   created_at: Date;
   updated_at: Date;
 
@@ -117,3 +119,13 @@ export interface PersonRelation {
 
 export type TCreatePerson = z.infer<typeof FamilyTreeValidation.createPerson>;
 export type TCreatePersonPayload = TCreatePerson["body"];
+
+/******************************************/
+/*                                        */
+/*           Controller  Interface      	*/
+/*                                        */
+/*****************************************/
+export type TFamilyTreeControllerOptions = {
+  service: typeof FamilyTreeService;
+  catchAsync: typeof catchAsync;
+};

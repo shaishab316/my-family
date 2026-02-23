@@ -5,5 +5,5 @@ export default {
     user: String(process.env.NEO4J_USER),
     password: String(process.env.NEO4J_PASSWORD),
     database: String(process.env.NEO4J_DATABASE),
-  }
-}
+  },
+};
